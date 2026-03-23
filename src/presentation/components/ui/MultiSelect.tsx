@@ -50,10 +50,10 @@ function MultiSelect({
     <div ref={ref} className="relative w-full">
       <div
         onClick={() => setOpen((prev) => !prev)}
-        className="min-h-11 w-full flex flex-wrap items-center gap-1.5 px-3 py-2 rounded-xl border border-gray-200 bg-white shadow-sm cursor-pointer focus-within:ring-2 focus-within:ring-red-400 transition"
+        className="min-h-11 w-full flex flex-wrap items-center gap-1.5 px-3 py-2 rounded-xl border border-gray-200 dark:border-gray-600 bg-white dark:bg-gray-800 shadow-sm cursor-pointer focus-within:ring-2 focus-within:ring-red-400 transition"
       >
         {selected.length === 0 && (
-          <span className="text-gray-400 text-sm select-none">
+          <span className="text-gray-400 dark:text-gray-500 text-sm select-none">
             {placeholder}
           </span>
         )}
@@ -90,17 +90,17 @@ function MultiSelect({
       </div>
 
       {open && (
-        <div className="absolute z-10 mt-2 w-full bg-white border border-gray-200 rounded-xl shadow-lg max-h-60 overflow-y-auto">
+        <div className="absolute z-10 mt-2 w-full bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-600 rounded-xl shadow-lg max-h-60 overflow-y-auto">
           {options.map((option) => {
             const isSelected = selected.includes(option.value);
             return (
               <div
                 key={option.value}
                 onClick={() => toggle(option.value)}
-                className={`flex items-center gap-3 px-4 py-2.5 cursor-pointer text-sm capitalize transition hover:bg-gray-50 ${isSelected ? "text-red-600 font-semibold" : "text-gray-700"}`}
+                className={`flex items-center gap-3 px-4 py-2.5 cursor-pointer text-sm capitalize transition hover:bg-gray-50 dark:hover:bg-gray-700 ${isSelected ? "text-red-500 font-semibold" : "text-gray-700 dark:text-gray-200"}`}
               >
                 <span
-                  className={`w-4 h-4 rounded border flex items-center justify-center shrink-0 transition ${isSelected ? "bg-red-500 border-red-500" : "border-gray-300"}`}
+                  className={`w-4 h-4 rounded border flex items-center justify-center shrink-0 transition ${isSelected ? "bg-red-500 border-red-500" : "border-gray-300 dark:border-gray-500"}`}
                 >
                   {isSelected && (
                     <svg

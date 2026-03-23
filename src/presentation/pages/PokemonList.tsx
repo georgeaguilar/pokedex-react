@@ -20,7 +20,7 @@ function PokemonList() {
 
   if (loading) return (
     <div className="flex justify-center items-center min-h-[60vh]">
-      <p className="text-gray-500 text-lg">Loading Pokémon...</p>
+      <p className="text-gray-500 dark:text-gray-400 text-lg">Loading Pokémon...</p>
     </div>
   )
 
@@ -49,7 +49,7 @@ function PokemonList() {
 
       {displayed.length === 0 ? (
         <div className="flex justify-center items-center min-h-[40vh]">
-          <p className="text-gray-400 text-lg">No Pokémon found.</p>
+          <p className="text-gray-400 dark:text-gray-500 text-lg">No Pokémon found.</p>
         </div>
       ) : (
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">

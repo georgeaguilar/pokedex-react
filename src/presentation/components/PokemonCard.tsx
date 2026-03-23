@@ -18,9 +18,9 @@ function PokemonCard({ pokemon }: Props) {
   return (
     <div
       onClick={() => navigate(`/pokemon/${pokemon.name}`)}
-      className="bg-white rounded-2xl shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-200 cursor-pointer flex flex-col items-center p-4 gap-2 border border-gray-100"
+      className="bg-white dark:bg-gray-800 rounded-2xl shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-200 cursor-pointer flex flex-col items-center p-4 gap-2 border border-gray-100 dark:border-gray-700"
     >
-      <span className="self-end text-xs font-semibold text-gray-400">
+      <span className="self-end text-xs font-semibold text-gray-400 dark:text-gray-500">
         #{String(id).padStart(3, '0')}
       </span>
       <img
@@ -29,7 +29,7 @@ function PokemonCard({ pokemon }: Props) {
         className="w-28 h-28 object-contain drop-shadow-md"
         loading="lazy"
       />
-      <span className="text-gray-800 font-semibold capitalize tracking-wide">
+      <span className="text-gray-800 dark:text-gray-100 font-semibold capitalize tracking-wide">
         {pokemon.name}
       </span>
     </div>

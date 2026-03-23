@@ -32,15 +32,15 @@ function PokemonDetail() {
     <div className="max-w-2xl mx-auto px-4 py-8">
       <button
         onClick={() => navigate('/')}
-        className="flex items-center gap-1 text-sm text-gray-500 hover:text-red-500 transition-colors mb-6 cursor-pointer"
+        className="flex items-center gap-1 text-sm text-gray-500 dark:text-gray-400 hover:text-red-500 transition-colors mb-6 cursor-pointer"
       >
         ← Back
       </button>
 
-      <div className="bg-white rounded-3xl shadow-lg overflow-hidden">
+      <div className="bg-white dark:bg-gray-800 rounded-3xl shadow-lg overflow-hidden">
         {/* Hero */}
-        <div className="bg-gray-50 flex flex-col items-center pt-8 pb-4 gap-2">
-          <span className="text-sm font-semibold text-gray-400">
+        <div className="bg-gray-50 dark:bg-gray-700 flex flex-col items-center pt-8 pb-4 gap-2">
+          <span className="text-sm font-semibold text-gray-400 dark:text-gray-500">
             #{String(id).padStart(3, '0')}
           </span>
           <img
@@ -48,7 +48,7 @@ function PokemonDetail() {
             alt={pokeName}
             className="w-48 h-48 object-contain drop-shadow-xl"
           />
-          <h1 className="text-3xl font-bold capitalize text-gray-800 tracking-wide mt-2">
+          <h1 className="text-3xl font-bold capitalize text-gray-800 dark:text-gray-100 tracking-wide mt-2">
             {pokeName}
           </h1>
           <div className="flex gap-2 mt-1">
@@ -66,32 +66,32 @@ function PokemonDetail() {
         {/* Info */}
         <div className="px-8 py-6 flex flex-col gap-6">
           {/* Height & Weight */}
-          <div className="grid grid-cols-2 divide-x divide-gray-100">
+          <div className="grid grid-cols-2 divide-x divide-gray-100 dark:divide-gray-700">
             <div className="flex flex-col items-center gap-1 pr-4">
-              <span className="text-xs text-gray-400 uppercase tracking-wider">Height</span>
-              <span className="text-xl font-semibold text-gray-700">{(height / 10).toFixed(1)} m</span>
+              <span className="text-xs text-gray-400 dark:text-gray-500 uppercase tracking-wider">Height</span>
+              <span className="text-xl font-semibold text-gray-700 dark:text-gray-200">{(height / 10).toFixed(1)} m</span>
             </div>
             <div className="flex flex-col items-center gap-1 pl-4">
-              <span className="text-xs text-gray-400 uppercase tracking-wider">Weight</span>
-              <span className="text-xl font-semibold text-gray-700">{(weight / 10).toFixed(1)} kg</span>
+              <span className="text-xs text-gray-400 dark:text-gray-500 uppercase tracking-wider">Weight</span>
+              <span className="text-xl font-semibold text-gray-700 dark:text-gray-200">{(weight / 10).toFixed(1)} kg</span>
             </div>
           </div>
 
           {/* Stats */}
           <div>
-            <h2 className="text-sm font-semibold text-gray-400 uppercase tracking-wider mb-3">
+            <h2 className="text-sm font-semibold text-gray-400 dark:text-gray-500 uppercase tracking-wider mb-3">
               Base Stats
             </h2>
             <div className="flex flex-col gap-3">
               {stats.map(({ stat, base_stat }) => (
                 <div key={stat.name} className="flex items-center gap-3">
-                  <span className="w-10 text-xs font-bold text-gray-400 uppercase text-right shrink-0">
+                  <span className="w-10 text-xs font-bold text-gray-400 dark:text-gray-500 uppercase text-right shrink-0">
                     {STAT_LABELS[stat.name] ?? stat.name}
                   </span>
-                  <span className="w-8 text-sm font-semibold text-gray-700 text-right shrink-0">
+                  <span className="w-8 text-sm font-semibold text-gray-700 dark:text-gray-200 text-right shrink-0">
                     {base_stat}
                   </span>
-                  <div className="flex-1 bg-gray-100 rounded-full h-2.5 overflow-hidden">
+                  <div className="flex-1 bg-gray-100 dark:bg-gray-700 rounded-full h-2.5 overflow-hidden">
                     <div
                       className={`h-full rounded-full transition-all duration-500 ${STAT_COLORS[stat.name] ?? 'bg-gray-400'}`}
                       style={{ width: `${Math.min((base_stat / 255) * 100, 100)}%` }}
