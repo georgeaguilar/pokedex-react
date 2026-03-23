@@ -53,8 +53,14 @@ function PokemonList() {
         </div>
       ) : (
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
-          {displayed.map((pokemon) => (
-            <PokemonCard key={pokemon.name} pokemon={pokemon} />
+          {displayed.map((pokemon, index) => (
+            <div
+              key={pokemon.name}
+              className="animate-fade-in-up"
+              style={{ animationDelay: `${index * 30}ms` }}
+            >
+              <PokemonCard pokemon={pokemon} />
+            </div>
           ))}
         </div>
       )}
