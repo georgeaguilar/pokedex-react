@@ -1,13 +1,13 @@
 import { create } from 'zustand'
 import type { Pokemon, PokemonListItem } from '../../domain/pokemon.types'
-import { fetchPokemonList, fetchPokemonByName } from '../../infrastructure/pokeapi/pokemonApi'
+import { fetchPokemonList, fetchPokemonByName, fetchPokemonNamesByTypes } from '../../infrastructure/pokeapi/pokemonApi'
 
 interface PokemonStore {
   pokemons: PokemonListItem[]
   selectedPokemon: Pokemon | null
   loading: boolean
   error: string | null
-  fetchPokemons: () => Promise<void>
+  fetchPokemons: (types?: string[]) => Promise<void>
   fetchPokemon: (name: string) => Promise<void>
 }
 
@@ -17,11 +17,17 @@ export const usePokemonStore = create<PokemonStore>((set) => ({
   loading: false,
   error: null,
 
-  fetchPokemons: async () => {
+  fetchPokemons: async (types: string[] = []) => {
     set({ loading: true, error: null })
     try {
-      const pokemons = await fetchPokemonList()
-      set({ pokemons, loading: false })
+      const allPokemons = await fetchPokemonList()
+      if (types.length === 0) {
+        set({ pokemons: allPokemons, loading: false })
+        return
+      }
+      const namesByType = await fetchPokemonNamesByTypes(types)
+      const filtered = allPokemons.filter((p) => namesByType.has(p.name))
+      set({ pokemons: filtered, loading: false })
     } catch {
       set({ error: 'Error al cargar los pokémon', loading: false })
     }

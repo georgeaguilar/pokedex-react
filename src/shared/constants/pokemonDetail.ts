@@ -1,3 +1,9 @@
+export const POKEMON_TYPES = [
+  'normal', 'fire', 'water', 'grass', 'electric', 'ice',
+  'fighting', 'poison', 'ground', 'flying', 'psychic', 'bug',
+  'rock', 'ghost', 'dragon', 'dark', 'steel', 'fairy',
+].map((type) => ({ value: type, label: type.charAt(0).toUpperCase() + type.slice(1) }))
+
 export const TYPE_COLORS: Record<string, string> = {
   fire:             'bg-orange-400 text-white',
   water:            'bg-blue-400 text-white',
