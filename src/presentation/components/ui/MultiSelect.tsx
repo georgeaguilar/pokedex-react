@@ -17,7 +17,7 @@ function MultiSelect({
   options,
   selected,
   onChange,
-  placeholder = "Seleccionar...",
+  placeholder = "Select...",
   colorMap,
 }: Props) {
   const [open, setOpen] = useState(false);

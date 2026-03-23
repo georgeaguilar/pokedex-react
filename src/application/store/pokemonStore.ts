@@ -29,7 +29,7 @@ export const usePokemonStore = create<PokemonStore>((set) => ({
       const filtered = allPokemons.filter((p) => namesByType.has(p.name))
       set({ pokemons: filtered, loading: false })
     } catch {
-      set({ error: 'Error al cargar los pokémon', loading: false })
+      set({ error: 'Failed to load Pokémon', loading: false })
     }
   },
 
@@ -39,7 +39,7 @@ export const usePokemonStore = create<PokemonStore>((set) => ({
       const selectedPokemon = await fetchPokemonByName(name)
       set({ selectedPokemon, loading: false })
     } catch {
-      set({ error: 'Error al cargar el pokémon', loading: false })
+      set({ error: 'Failed to load Pokémon', loading: false })
     }
   },
 }))

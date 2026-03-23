@@ -4,7 +4,7 @@ interface Props {
   placeholder?: string
 }
 
-function SearchInput({ value, onChange, placeholder = 'Buscar...' }: Props) {
+function SearchInput({ value, onChange, placeholder = 'Search...' }: Props) {
   return (
     <div className="relative w-full">
       <span className="absolute inset-y-0 left-3 flex items-center pointer-events-none text-gray-400">

@@ -14,7 +14,7 @@ function PokemonDetail() {
 
   if (loading) return (
     <div className="flex justify-center items-center min-h-[60vh]">
-      <p className="text-gray-500 text-lg">Cargando pokémon...</p>
+      <p className="text-gray-500 text-lg">Loading Pokémon...</p>
     </div>
   )
 
@@ -34,7 +34,7 @@ function PokemonDetail() {
         onClick={() => navigate('/')}
         className="flex items-center gap-1 text-sm text-gray-500 hover:text-red-500 transition-colors mb-6 cursor-pointer"
       >
-        ← Volver
+        ← Back
       </button>
 
       <div className="bg-white rounded-3xl shadow-lg overflow-hidden">
@@ -68,11 +68,11 @@ function PokemonDetail() {
           {/* Height & Weight */}
           <div className="grid grid-cols-2 divide-x divide-gray-100">
             <div className="flex flex-col items-center gap-1 pr-4">
-              <span className="text-xs text-gray-400 uppercase tracking-wider">Altura</span>
+              <span className="text-xs text-gray-400 uppercase tracking-wider">Height</span>
               <span className="text-xl font-semibold text-gray-700">{(height / 10).toFixed(1)} m</span>
             </div>
             <div className="flex flex-col items-center gap-1 pl-4">
-              <span className="text-xs text-gray-400 uppercase tracking-wider">Peso</span>
+              <span className="text-xs text-gray-400 uppercase tracking-wider">Weight</span>
               <span className="text-xl font-semibold text-gray-700">{(weight / 10).toFixed(1)} kg</span>
             </div>
           </div>
@@ -80,7 +80,7 @@ function PokemonDetail() {
           {/* Stats */}
           <div>
             <h2 className="text-sm font-semibold text-gray-400 uppercase tracking-wider mb-3">
-              Estadísticas base
+              Base Stats
             </h2>
             <div className="flex flex-col gap-3">
               {stats.map(({ stat, base_stat }) => (

@@ -20,7 +20,7 @@ function PokemonList() {
 
   if (loading) return (
     <div className="flex justify-center items-center min-h-[60vh]">
-      <p className="text-gray-500 text-lg">Cargando pokémon...</p>
+      <p className="text-gray-500 text-lg">Loading Pokémon...</p>
     </div>
   )
 
@@ -36,20 +36,20 @@ function PokemonList() {
         <SearchInput
           value={search}
           onChange={setSearch}
-          placeholder="Buscar por nombre..."
+          placeholder="Search by name..."
         />
         <MultiSelect
           options={POKEMON_TYPES}
           selected={selectedTypes}
           onChange={setSelectedTypes}
-          placeholder="Filtrar por tipo..."
+          placeholder="Filter by type..."
           colorMap={TYPE_COLORS}
         />
       </div>
 
       {displayed.length === 0 ? (
         <div className="flex justify-center items-center min-h-[40vh]">
-          <p className="text-gray-400 text-lg">No se encontraron pokémon.</p>
+          <p className="text-gray-400 text-lg">No Pokémon found.</p>
         </div>
       ) : (
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
