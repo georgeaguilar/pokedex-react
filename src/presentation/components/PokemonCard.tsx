@@ -1,3 +1,4 @@
+import { memo } from 'react'
 import { useNavigate } from 'react-router-dom'
 import type { PokemonListItem } from '../../domain/pokemon.types'
 
@@ -36,4 +37,4 @@ function PokemonCard({ pokemon }: Props) {
   )
 }
 
-export default PokemonCard
+export default memo(PokemonCard)

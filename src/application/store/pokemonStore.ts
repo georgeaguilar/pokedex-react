@@ -4,6 +4,7 @@ import { fetchPokemonList, fetchPokemonByName, fetchPokemonNamesByTypes } from '
 
 interface PokemonStore {
   pokemons: PokemonListItem[]
+  allPokemons: PokemonListItem[]
   selectedPokemon: Pokemon | null
   loading: boolean
   error: string | null
@@ -11,8 +12,9 @@ interface PokemonStore {
   fetchPokemon: (name: string) => Promise<void>
 }
 
-export const usePokemonStore = create<PokemonStore>((set) => ({
+export const usePokemonStore = create<PokemonStore>((set, get) => ({
   pokemons: [],
+  allPokemons: [],
   selectedPokemon: null,
   loading: false,
   error: null,
@@ -20,7 +22,11 @@ export const usePokemonStore = create<PokemonStore>((set) => ({
   fetchPokemons: async (types: string[] = []) => {
     set({ loading: true, error: null })
     try {
-      const allPokemons = await fetchPokemonList()
+      let allPokemons = get().allPokemons
+      if (allPokemons.length === 0) {
+        allPokemons = await fetchPokemonList()
+        set({ allPokemons })
+      }
       if (types.length === 0) {
         set({ pokemons: allPokemons, loading: false })
         return

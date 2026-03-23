@@ -4,15 +4,17 @@ import PokemonCard from '../components/PokemonCard'
 import SearchInput from '../components/ui/SearchInput'
 import MultiSelect from '../components/ui/MultiSelect'
 import { POKEMON_TYPES, TYPE_COLORS } from '../../shared/constants/pokemonDetail'
+import useDebounce from '../hooks/useDebounce'
 
 function PokemonList() {
   const { pokemons, loading, error, fetchPokemons } = usePokemonStore()
   const [search, setSearch] = useState('')
   const [selectedTypes, setSelectedTypes] = useState<string[]>([])
+  const debouncedTypes = useDebounce(selectedTypes)
 
   useEffect(() => {
-    fetchPokemons(selectedTypes)
-  }, [selectedTypes, fetchPokemons])
+    fetchPokemons(debouncedTypes)
+  }, [debouncedTypes, fetchPokemons])
 
   const displayed = pokemons.filter((p) =>
     p.name.toLowerCase().includes(search.toLowerCase())
@@ -57,7 +59,7 @@ function PokemonList() {
             <div
               key={pokemon.name}
               className="animate-fade-in-up"
-              style={{ animationDelay: `${index * 30}ms` }}
+              style={{ animationDelay: `${Math.min(index * 30, 400)}ms` }}
             >
               <PokemonCard pokemon={pokemon} />
             </div>
