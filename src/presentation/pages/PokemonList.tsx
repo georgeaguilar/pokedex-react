@@ -7,20 +7,25 @@ import Pagination from "../components/ui/Pagination";
 import {
   ITEMS_PER_PAGE,
   POKEMON_TYPES,
+  REGIONS,
   TYPE_COLORS,
 } from "../../shared/constants/pokemonDetail";
 import useDebounce from "../hooks/useDebounce";
+
+const REGION_OPTIONS = REGIONS.map(({ value, label }) => ({ value, label }))
 
 function PokemonList() {
   const { pokemons, loading, error, fetchPokemons } = usePokemonStore();
   const [search, setSearch] = useState("");
   const [selectedTypes, setSelectedTypes] = useState<string[]>([]);
+  const [selectedRegions, setSelectedRegions] = useState<string[]>(["kanto"]);
   const [currentPage, setCurrentPage] = useState(1);
   const debouncedTypes = useDebounce(selectedTypes);
+  const debouncedRegions = useDebounce(selectedRegions);
 
   useEffect(() => {
-    fetchPokemons(debouncedTypes);
-  }, [debouncedTypes, fetchPokemons]);
+    fetchPokemons(debouncedTypes, debouncedRegions);
+  }, [debouncedTypes, debouncedRegions, fetchPokemons]);
 
   const filtered = pokemons.filter((p) =>
     p.name.toLowerCase().includes(search.toLowerCase()),
@@ -58,6 +63,15 @@ function PokemonList() {
             setCurrentPage(1);
           }}
           placeholder="Search by name..."
+        />
+        <MultiSelect
+          options={REGION_OPTIONS}
+          selected={selectedRegions}
+          onChange={(v) => {
+            setSelectedRegions(v.length === 0 ? ["kanto"] : v);
+            setCurrentPage(1);
+          }}
+          placeholder="Filter by region..."
         />
         <MultiSelect
           options={POKEMON_TYPES}

@@ -1,5 +1,24 @@
 export const ITEMS_PER_PAGE = 10
 
+export interface Region {
+  value: string
+  label: string
+  offset: number
+  limit: number
+}
+
+export const REGIONS: Region[] = [
+  { value: 'kanto',  label: 'Kanto  — Gen I',   offset: 0,    limit: 151 },
+  { value: 'johto',  label: 'Johto  — Gen II',  offset: 151,  limit: 100 },
+  { value: 'hoenn',  label: 'Hoenn  — Gen III', offset: 251,  limit: 135 },
+  { value: 'sinnoh', label: 'Sinnoh — Gen IV',  offset: 386,  limit: 107 },
+  { value: 'unova',  label: 'Unova  — Gen V',   offset: 493,  limit: 156 },
+  { value: 'kalos',  label: 'Kalos  — Gen VI',  offset: 649,  limit: 72  },
+  { value: 'alola',  label: 'Alola  — Gen VII', offset: 721,  limit: 88  },
+  { value: 'galar',  label: 'Galar  — Gen VIII',offset: 809,  limit: 96  },
+  { value: 'paldea', label: 'Paldea — Gen IX',  offset: 905,  limit: 120 },
+]
+
 export const POKEMON_TYPES = [
   'normal', 'fire', 'water', 'grass', 'electric', 'ice',
   'fighting', 'poison', 'ground', 'flying', 'psychic', 'bug',

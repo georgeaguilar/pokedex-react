@@ -30,7 +30,7 @@ function PokemonCard({ pokemon }: Props) {
         className="w-20 h-20 sm:w-28 sm:h-28 object-contain drop-shadow-md"
         loading="lazy"
       />
-      <span className="text-gray-800 dark:text-gray-100 font-semibold capitalize tracking-wide">
+      <span className="text-gray-800 dark:text-gray-100 font-semibold capitalize tracking-wide w-full text-center truncate">
         {pokemon.name}
       </span>
     </div>
