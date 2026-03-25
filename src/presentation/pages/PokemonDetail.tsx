@@ -46,9 +46,9 @@ function PokemonDetail() {
           <img
             src={sprites.other['official-artwork'].front_default}
             alt={pokeName}
-            className="w-48 h-48 object-contain drop-shadow-xl"
+            className="w-36 h-36 sm:w-48 sm:h-48 object-contain drop-shadow-xl"
           />
-          <h1 className="text-3xl font-bold capitalize text-gray-800 dark:text-gray-100 tracking-wide mt-2">
+          <h1 className="text-2xl sm:text-3xl font-bold capitalize text-gray-800 dark:text-gray-100 tracking-wide mt-2">
             {pokeName}
           </h1>
           <div className="flex gap-2 mt-1">
@@ -64,7 +64,7 @@ function PokemonDetail() {
         </div>
 
         {/* Info */}
-        <div className="px-8 py-6 flex flex-col gap-6">
+        <div className="px-4 sm:px-8 py-6 flex flex-col gap-6">
           {/* Height & Weight */}
           <div className="grid grid-cols-2 divide-x divide-gray-100 dark:divide-gray-700">
             <div className="flex flex-col items-center gap-1 pr-4">
