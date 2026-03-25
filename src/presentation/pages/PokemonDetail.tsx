@@ -2,6 +2,7 @@ import { useEffect } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
 import { usePokemonStore } from '../../application/store/pokemonStore'
 import { TYPE_COLORS, STAT_COLORS, STAT_LABELS } from '../../shared/constants/pokemonDetail'
+import SoundButton from '../components/ui/SoundButton'
 
 function PokemonDetail() {
   const { name } = useParams<{ name: string }>()
@@ -40,9 +41,15 @@ function PokemonDetail() {
       <div className="bg-white dark:bg-gray-800 rounded-3xl shadow-lg overflow-hidden">
         {/* Hero */}
         <div className="bg-gray-50 dark:bg-gray-700 flex flex-col items-center pt-8 pb-4 gap-2">
-          <span className="text-sm font-semibold text-gray-400 dark:text-gray-500">
-            #{String(id).padStart(3, '0')}
-          </span>
+          <div className="flex items-center gap-3">
+            <span className="text-sm font-semibold text-gray-400 dark:text-gray-500">
+              #{String(id).padStart(3, '0')}
+            </span>
+            <SoundButton
+              cryUrl={`https://raw.githubusercontent.com/PokeAPI/cries/main/cries/pokemon/latest/${id}.ogg`}
+              label={`Play ${pokeName} cry`}
+            />
+          </div>
           <img
             src={sprites.other['official-artwork'].front_default}
             alt={pokeName}
